@@ -21,3 +21,4 @@ puts "      |  #{p_hash[:c1]}  |  #{p_hash[:c2]}  |  #{p_hash[:c3]}  |      "
 puts <<-'EOF'
       |_____|_____|_____|
 EOF
+puts "Maître(sse) #{joueur_1}"
