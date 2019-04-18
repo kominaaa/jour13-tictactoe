@@ -39,9 +39,7 @@ class Game
     ((@@p_hash[:a3] == "O") && (@@p_hash[:b3] == "O") && (@@p_hash[:c3] == "O")) ||
     ((@@p_hash[:a1] == "O") && (@@p_hash[:b2] == "O") && (@@p_hash[:c3] == "O")) ||
     ((@@p_hash[:a3] == "O") && (@@p_hash[:b2] == "O") && (@@p_hash[:c1] == "O"))
-    puts "tu as gagner O"
-    return true 
- elsif ((@@p_hash[:a1] == "X") && (@@p_hash[:a2] == "X") && (@@p_hash[:a3] == "X")) ||
+    ((@@p_hash[:a1] == "X") && (@@p_hash[:a2] == "X") && (@@p_hash[:a3] == "X")) ||
     ((@@p_hash[:b1] == "X") && (@@p_hash[:b2] == "X") && (@@p_hash[:b3] == "X")) ||
     ((@@p_hash[:c1] == "X") && (@@p_hash[:c2] == "X") && (@@p_hash[:c3] == "X")) ||
     ((@@p_hash[:a1] == "X") && (@@p_hash[:b1] == "X") && (@@p_hash[:b1] == "X")) ||
@@ -49,7 +47,7 @@ class Game
     ((@@p_hash[:a3] == "X") && (@@p_hash[:b3] == "X") && (@@p_hash[:c3] == "X")) ||
     ((@@p_hash[:a1] == "X") && (@@p_hash[:b2] == "X") && (@@p_hash[:c3] == "X")) ||
     ((@@p_hash[:a3] == "X") && (@@p_hash[:b2] == "X") && (@@p_hash[:c1] == "X"))
-    puts "tu as gagner x"  
+    puts "tu as gagner"  
   return true 
  elsif @player1.are_turns_over? == true
  return nil
