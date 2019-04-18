@@ -121,7 +121,8 @@ class Game
     board_game()
     puts "Le Champion #{name_player} a gagné ! "
     puts "Score total: #{@player1.playername}: #{@@score_player1} points, #{@player2.playername}: #{@@score_player2} points."
-    else is_game_won? == nil 
+    else is_game_won? == nil
+    @@score_player1 -= 1      #fix de cochon pour l'égalité 
     board_game()
     puts "La puissance de nos deux Champions ne peut être départagée..."
     puts "Score total: #{@player1.playername}: #{@@score_player1} points, #{@player2.playername}: #{@@score_player2} points."
