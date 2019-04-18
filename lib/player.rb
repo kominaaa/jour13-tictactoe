@@ -19,8 +19,6 @@ class Player
       puts "#{@playername}, où voulez placer votre #{@team} ?"
       print "> "
       position_choice = gets.chomp.to_sym
-      puts position_choice
-      puts position_choice.class
       if Game.is_position_valid?(position_choice)
         valid_input = true
         @@tour += 1

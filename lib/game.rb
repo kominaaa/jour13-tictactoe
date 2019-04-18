@@ -29,50 +29,33 @@ class Game
   def self.add_on_board(valid_position, team)
     @@p_hash[valid_position] = "#{team}"
   end
-  
-
-
-
-
-
-
-
   def is_game_won?
-    array_win = [
-      '{:a1=>"O", :a2=> "O", :a3=>"O" }', 
-      '{ :b1=>"O",:b2=> "O", :b3=>"O" }', 
-      '{ :c1=>"O", :c2=>"O", :c3=>"O" }', 
-      '{ :a1=>"O", :b1=>"O", :c1=>"O" }',
-      '{ :a2=>"O", :b2=>"O", :c2=>"O" }',
-      '{ :a3=>"O", :b3=>"O", :c3=>"O" }',
-      '{ :a1=>"O", :b2=>"O", :c3=>"O" }',
-      '{ :a3=>"O", :b2=>"O", :c1=>"O" }',
-      '{ :a1=>"X", :a2=>"X", :a3=>"X" }', 
-      '{ :b1=>"X", :b2=>"X", :b3=>"X" }', 
-      '{ :c1=>"X", :c2=>"X", :c3=>"X" }', 
-      '{ :a1=>"X", :b1=>"X", :c1=>"X" }',
-      '{ :a2=>"X", :b2=>"X", :c2=>"X" }',
-      '{ :a3=>"X", :b3=>"X", :c3=>"X" }',
-      '{ :a1=>"X", :b2=>"X", :c3=>"X" }',
-      '{ :a3=>"X", :b2=>"X", :c1=>"X" }',
-    ]     
-    check = @@p_hash.to_s
-    puts check 
-     puts array_win.length
-    array_win.each do | winline |
-    puts winline
-    puts check.scan(winline)
-     if check.scan(winline) == true 
-        @game_end = true
-        break
-      elsif  @player1.are_turns_over? 
-        return nil
-      else 
-        return false
-      end
-    end
-  end
-
+    puts @@p_hash
+ if ((@@p_hash[:a1] == "O") && (@@p_hash[:a2] == "O") && (@@p_hash[:a3] == "O")) ||
+    ((@@p_hash[:b1] == "O") && (@@p_hash[:b2] == "O") && (@@p_hash[:b3] == "O")) ||
+    ((@@p_hash[:c1] == "O") && (@@p_hash[:c2] == "O") && (@@p_hash[:c3] == "O")) ||
+    ((@@p_hash[:a1] == "O") && (@@p_hash[:b1] == "O") && (@@p_hash[:c1] == "O")) ||
+    ((@@p_hash[:a2] == "O") && (@@p_hash[:b2] == "O") && (@@p_hash[:c2] == "O")) ||
+    ((@@p_hash[:a3] == "O") && (@@p_hash[:b3] == "O") && (@@p_hash[:c3] == "O")) ||
+    ((@@p_hash[:a1] == "O") && (@@p_hash[:b2] == "O") && (@@p_hash[:c3] == "O")) ||
+    ((@@p_hash[:a3] == "O") && (@@p_hash[:b2] == "O") && (@@p_hash[:c1] == "O"))
+    puts "tu as gagner O"
+    return true 
+ elsif ((@@p_hash[:a1] == "X") && (@@p_hash[:a2] == "X") && (@@p_hash[:a3] == "X")) ||
+    ((@@p_hash[:b1] == "X") && (@@p_hash[:b2] == "X") && (@@p_hash[:b3] == "X")) ||
+    ((@@p_hash[:c1] == "X") && (@@p_hash[:c2] == "X") && (@@p_hash[:c3] == "X")) ||
+    ((@@p_hash[:a1] == "X") && (@@p_hash[:b1] == "X") && (@@p_hash[:b1] == "X")) ||
+    ((@@p_hash[:a2] == "X") && (@@p_hash[:b2] == "X") && (@@p_hash[:c2] == "X")) ||
+    ((@@p_hash[:a3] == "X") && (@@p_hash[:b3] == "X") && (@@p_hash[:c3] == "X")) ||
+    ((@@p_hash[:a1] == "X") && (@@p_hash[:b2] == "X") && (@@p_hash[:c3] == "X")) ||
+    ((@@p_hash[:a3] == "X") && (@@p_hash[:b2] == "X") && (@@p_hash[:c1] == "X"))
+    puts "tu as gagner x"  
+  return true 
+ elsif @player1.are_turns_over? == true
+ return nil
+end 
+return false 
+end 
   def board_game
     system("clear")
     puts <<-'EOF'
@@ -108,11 +91,27 @@ class Game
       board_game()
       @player1.get_player_move()
       if is_game_won? != false
-        break
+          winner(@player1.playername)
+          break
       end
       board_game()
       @player2.get_player_move()
+      if is_game_won? != false
+         winner(@player1.playername)
+      end
     end
+  end 
+
+  def winner(name_player)
+    if is_game_won? == true 
+    board_game()
+    puts "#{name_player} as gagner ! "
+    else is_game_won? == nil 
+    board_game()
+    puts "egalité"
+     end 
+  end
+
 
   end
-end
+
