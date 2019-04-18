@@ -7,6 +7,10 @@ class Player
     @team = team
   end
 
+  def self.reset_turn
+    @@tour = 0
+  end
+
   def are_turns_over?
     if @@tour == 9
       return true
@@ -16,7 +20,7 @@ class Player
   def get_player_move
     valid_input = false 
     while valid_input != true
-      puts "#{@playername}, où voulez placer votre #{@team} ?"
+      puts "Grand Maître Stratège #{@playername}, où voulez placer votre #{@team} ?"
       print "> "
       position_choice = gets.chomp.to_sym
       if Game.is_position_valid?(position_choice)
@@ -24,8 +28,9 @@ class Player
         @@tour += 1
         Game.add_on_board(position_choice, @team)
       else
-        puts "C'est pas bon enculé, réecris."
+        puts "Ce n'est pas une position valable, Grand Maître Stratège."
       end
     end
   end
+
 end
