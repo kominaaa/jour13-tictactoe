@@ -8,7 +8,7 @@ class Player
   end
 
   def are_turns_over?
-    if @tour == 9
+    if @@tour == 9
       return true
     end
   end
