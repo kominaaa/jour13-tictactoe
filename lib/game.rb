@@ -42,7 +42,7 @@ class Game
     ((@@p_hash[:a1] == "X") && (@@p_hash[:a2] == "X") && (@@p_hash[:a3] == "X")) ||
     ((@@p_hash[:b1] == "X") && (@@p_hash[:b2] == "X") && (@@p_hash[:b3] == "X")) ||
     ((@@p_hash[:c1] == "X") && (@@p_hash[:c2] == "X") && (@@p_hash[:c3] == "X")) ||
-    ((@@p_hash[:a1] == "X") && (@@p_hash[:b1] == "X") && (@@p_hash[:b1] == "X")) ||
+    ((@@p_hash[:a1] == "X") && (@@p_hash[:b1] == "X") && (@@p_hash[:c1] == "X")) ||
     ((@@p_hash[:a2] == "X") && (@@p_hash[:b2] == "X") && (@@p_hash[:c2] == "X")) ||
     ((@@p_hash[:a3] == "X") && (@@p_hash[:b3] == "X") && (@@p_hash[:c3] == "X")) ||
     ((@@p_hash[:a1] == "X") && (@@p_hash[:b2] == "X") && (@@p_hash[:c3] == "X")) ||
