@@ -19,16 +19,15 @@ class Game
 
   def self.is_position_valid?(position)
 
-=begin
-    if @@p_hash[:position] == " " && @@p_hash[:position] != nil
+
+    if @@p_hash[position] == " " && @@p_hash[position] != nil
       return true
     end 
   end
-=end 
-  return true 
-  end 
+
+
   def self.add_on_board(valid_position, team)
-    @@p_hash[:valid_position] = "#{team}"
+    @@p_hash[valid_position] = "#{team}"
   end
   
 
@@ -40,7 +39,7 @@ class Game
 
   def is_game_won?
     array_win = [
-      '{ :a1 => "O", :a2 => "O", :a3 => "O" }', 
+      '{:a1 => "O", :a2 => "O", :a3 => "O" }', 
       '{ :b1 => "O", :b2 => "O", :b3 => "O" }', 
       '{ :c1 => "O", :c2 => "O", :c3 => "O" }', 
       '{ :a1 => "O", :b1 => "O", :c1 => "O" }',
@@ -58,7 +57,10 @@ class Game
       '{ :a3 => "X", :b2 => "X", :c1 => "X" }',
     ]     
     check = @@p_hash.to_s
+    puts check 
+
     array_win.each do | winline |
+puts winline
       if check.include?(winline)
         @game_end = true
         break
