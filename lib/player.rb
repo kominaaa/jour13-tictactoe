@@ -7,17 +7,17 @@ class Player
     @team = team
   end
 
-  def self.reset_turn
+  def self.reset_turn   #reset du nombre de tours
     @@tour = 0
   end
 
-  def are_turns_over?
+  def are_turns_over?   #compte du nombre de tours au cours d'une partie
     if @@tour == 9
       return true
     end
   end
 
-  def get_player_move
+  def get_player_move   #méthode testant si la position entrée par le joueur est jouable
     valid_input = false 
     while valid_input != true
       puts "Grand Maître Stratège #{@playername}, où voulez placer votre #{@team} ?"

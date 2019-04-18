@@ -1,7 +1,7 @@
 class Game
   attr_accessor :game_end
 
-  def initialize(playername1="Zorg", playername2="Buhz")
+  def initialize(playername1, playername2)
     @player1 = Player.new("#{playername1}","X")
     @player2 = Player.new("#{playername2}","O")
     @@score_player1 = 0
@@ -19,7 +19,7 @@ class Game
     }
   end
 
-  def game_reset
+  def game_reset              # méthode pour reset le hash des valeurs de cases
     @@p_hash = { 
       :a1 => " ",
       :a2 => " ",
@@ -34,13 +34,13 @@ class Game
     Player.reset_turn()
   end
 
-  def self.is_position_valid?(position)
+  def self.is_position_valid?(position)   #test si le string entré par le joueur est valide
     if @@p_hash[position] == " " && @@p_hash[position] != nil
       return true
     end 
   end
 
-  def self.add_on_board(valid_position, team)
+  def self.add_on_board(valid_position, team)   #ajoute le symbole sur le board
     @@p_hash[valid_position] = "#{team}"
   end
 
@@ -68,7 +68,7 @@ class Game
     return false 
   end 
   
-  def board_game
+  def board_game   #affiche la grille de jeu
     system("clear")
     puts <<-'EOF'
 
@@ -98,7 +98,7 @@ class Game
     EOF
   end
 
-  def game_loop
+  def game_loop   #gestion de la boucle de jeu
     while is_game_won? == false
       board_game()
       @player1.get_player_move()
@@ -116,7 +116,7 @@ class Game
     end
   end 
 
-  def winner(name_player)
+  def winner(name_player)   #affichage des résultats de la partie 
     if is_game_won? == true 
     board_game()
     puts "Le Champion #{name_player} a gagné ! "
@@ -128,7 +128,7 @@ class Game
      end 
   end
 
-  def new_game
+  def new_game    #méthode pour proposer au joueurs de rejouer
     valid_input = false 
     while valid_input != true
       puts "Voulez-vous rejouer? oui/non"
