@@ -18,11 +18,13 @@ class Player
     while valid_input != true
       puts "#{@playername}, où voulez placer votre #{@team} ?"
       print "> "
-      position_choice = gets.chomp
-      if is_position_valid?(position_choice.downcase!)
+      position_choice = gets.chomp.to_sym
+      puts position_choice
+      puts position_choice.class
+      if Game.is_position_valid?(position_choice)
         valid_input = true
         @@tour += 1
-        add_on_board(position_choice, @team)
+        Game.add_on_board(position_choice, @team)
       else
         puts "C'est pas bon enculé, réecris."
       end
